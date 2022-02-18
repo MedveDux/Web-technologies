@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise_3</title>
+</head>
+<body>
+    <p id="table"></p>
+    <script>
+        var html = "<table style='text-aling: right'><tbody>";
+        var rows = 10;
+        var cols = 10;
+        var random = getRandomInt(1, rows*cols + 1);
+        var index = 0;
+
+        for (let i = 1; i <= cols; i++)
+        {
+            html += "<tr>";
+            for (let j = 1; j <= rows; j++)
+            {   
+                if (random == index)
+                html += `<td><input name="${i*j}" maxlength="2" style="max-width: 15px"></td>`;
+                else if (i*j <= 9)
+                    html += "<td>&nbsp;&nbsp;" + i*j + "</td>";
+                else if (i*j <= 99)
+                    html += "<td>&nbsp;" + i*j + "</td>";
+                else
+                html += "<td>" + i*j + "</td>";
+                index++;
+            }
+            html += "</tr>"; 
+        }
+        html += "</tbody></table>";
+
+        var random1 = getRandomInt(1, rows + 1);
+        var random2 = getRandomInt(1, rows + 1);
+        var random3 = getRandomInt(1, rows + 1);
+        var random4 = getRandomInt(1, rows + 1);
+
+        html += "<p>" + `${random1} * ${random2} = <input name="value" maxlength="2" style="max-width: 15px" id="random1">` + "</p>";
+        html += "<p>" + `${random3} * ${random4} = <input name="value" maxlength="2" style="max-width: 15px" id="random2">` + "</p>";
+
+        var random5 = getRandomInt(1, rows + 1);
+        var random6 = getRandomInt(1, rows + 1);
+        var res = random5 * random6;
+        var choice = getRandomInt(0, 2);
+        
+        if (choice === 1)
+            if (res <= 50)
+                res = res + getRandomInt(1, rows + 1);
+            else
+                res = res - getRandomInt(1, rows + 1);
+        html += "<p>" + `${random5} * ${random6} = ${res}&nbsp?&nbsp<input type="checkbox" id="random3">` + "</p>";
+
+
+        html +="<p>" +  `<input type="button" onclick="anserwer_true()" value="Anserwer!">` + "</p>";
+
+        function anserwer_true()
+        {
+            var html_new = html;
+            var ansewer1 = parseInt(document.getElementById("random1").value);
+            var ansewer2 = parseInt(document.getElementById("random2").value);
+
+            if (random1 * random2 == ansewer1)
+            {
+
+                html += "<p><b>" + `${random1} * ${random2} = ${random1 * random2}` + "</b></p>";
+                html += "<p><b>" + "Success!" + "</b></p>";
+            }
+            else
+            {
+                html += "<p><del>" + `${random1} * ${random2} = ${ansewer1}` + "</del></p>";
+                html += "<p>" + `${random1} * ${random2} = ${random1 * random2}`+ "</p>";
+                html += "<p><mark>" + "Error!" + "</mark></p>";
+            }
+
+            if (random3 * random4 == ansewer2)
+            {
+
+                html += "<p><b>" + `${random3} * ${random4} = ${random3 * random4}` + "</b></p>";
+                html += "<p><b>" + "Success!" + "</b></p>";
+            }
+            else
+            {
+                html += "<p><del>" + `${random3} * ${random4} = ${ansewer2}` + "</del></p>";
+                html += "<p>" + `${random3} * ${random4} = ${random3 * random4}`+ "</p>";
+                html += "<p><mark>" + "Error!" + "</mark></p>";
+            }
+            var ansewer3 = document.getElementById("random3").checked;
+            if (choice != ansewer3)
+            {
+
+                html += "<p><b>" + `${random5} * ${random6} = ${random5 * random6}` + "</b></p>";
+                html += "<p><b>" + "Success!" + "</b></p>";
+            }
+            else
+            {
+                html += "<p>" + `${random5} * ${random6} = ${random5 * random6}`+ "</p>";
+                html += "<p><mark>" + "Error!" + "</mark></p>";
+            }
+            
+            
+            document.getElementById("table").innerHTML = html;
+            html = html_new;
+        }
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    document.getElementById("table").innerHTML = html;
+    </script>
+    
+</body>
+</html>

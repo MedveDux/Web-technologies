@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise_2</title>
+</head>
+<body>
+    <p id="table"></p>
+    <script>
+        var html = "<table style='text-aling: right'><tbody>";
+        var rows = 10;
+        var cols = 10;
+        var random = getRandomInt(1, rows*cols + 1);
+        var index = 0;
+
+        for (let i = 1; i <= cols; i++)
+        {
+            html += "<tr>";
+            for (let j = 1; j <= rows; j++)
+            {   
+                if (random == index)
+                html += `<td><input name="${i*j}" maxlength="2" style="max-width: 15px"></td>`;
+                else if (i*j <= 9)
+                    html += "<td>&nbsp;&nbsp;" + i*j + "</td>";
+                else if (i*j <= 99)
+                    html += "<td>&nbsp;" + i*j + "</td>";
+                else
+                html += "<td>" + i*j + "</td>";
+                index++;
+            }
+            html += "</tr>"; 
+        }
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    document.getElementById("table").innerHTML = html;
+    </script>
+    
+</body>
+</html>

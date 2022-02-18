@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise_1</title>
+</head>
+<body>
+    <form>
+    <p  id="Age_script">Age:<input id="Age" onchange="Age_check()"></p>
+    <p  id="Status_script">Status:<input type="checkbox" id="Status"  onchange="Status_check()"></p>
+    <p  id="Evalustion_script">Evalustion:<input id="Evalustion" onchange="Evalustion_cheak()"></p>
+    <p  id="link"><a href="./test.html">Test</a></p>
+    <p  id="fail"><b>Age is not suitable!!!</b></p> 
+    </form> 
+    <script>
+        var Age_script = document.getElementById("Age_script");
+        var Status_script = document.getElementById("Status_script");
+        var Evalustion_script = document.getElementById("Evalustion_script");
+        var link = document.getElementById("link");
+        var Age_fail = document.getElementById("Age_fail");
+        var a = 0;        
+        var b = 0;
+
+        link.hidden = true;
+        Evalustion_script.hidden = true;
+        fail.hidden = true;
+        function Age_check()
+        {
+            var AgeInt = parseInt(document.getElementById("Age").value);
+
+            if (AgeInt >= 18 && AgeInt <= 30)
+            {
+                a = 1;
+                if (a == 1 && b == 2)
+                {
+                    Evalustion_script.hidden = false;  
+                    fail.hidden = true;
+                }
+            }
+            else
+            {
+                fail.hidden = false;
+                link.hidden = true;
+                Evalustion_script.hidden = true; 
+            }
+        }
+
+        function Status_check()
+        {
+            var StatusText = document.getElementById("Status").checked;
+ 
+            if (StatusText)
+            {
+                b = 2;
+                if (a == 1 && b == 2)
+                {
+                    Evalustion_script.hidden = false;  
+                    fail.hidden = true;
+                }
+            }
+            else
+            {
+                fail.innerText = "Status is not suitable!!!";
+                fail.hidden = false;
+                link.hidden = true;
+                Evalustion_script.hidden = true;
+            }
+        }
+            function Evalustion_cheak()
+            {
+                var EvalustionInt = parseInt(document.getElementById("Evalustion").value);
+
+                if (EvalustionInt >= 13 && EvalustionInt <= 15)
+                {
+                    link.hidden = false; 
+                    fail.hidden = true;
+                }
+                else
+                {
+                    fail.innerText = "Evalustion is not suitable!!!";
+                    fail.hidden = false;  
+                    link.hidden = true;
+                }
+            }
+    </script>
+</body>
+</html>

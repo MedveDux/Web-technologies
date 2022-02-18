@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise_4</title>
+</head>
+<body>
+        <h1>The creator of the work is Michael?</h1>
+            <input type="button" onclick="win1()" value="Yes" id="btn1">
+            <input type="button" onclick="fail1()" value="No" id="btn2">
+        <h1>The creator of the work is 20IT-MO?</h1>
+            <input type="button" onclick="win2()" value="Yes" id="btn3">
+            <input type="button" onclick="fail2()" value="No" id="btn4">
+        <h1>The anser is yes?</h1>
+            <input type="button" onclick="win3()" value="Yes" id="btn5">
+            <input type="button" onclick="fail3()" value="No" id="btn6"><br><br>
+            <p>This is button!</p>
+            <button><img src="good_luck.png" alt="btn" id="btn"></button>
+            <p id="fail"></p>
+    <script>
+        var true1 = 0;
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var btn3 = document.getElementById("btn3");
+        var btn4 = document.getElementById("btn4");
+        var btn5 = document.getElementById("btn5");
+        var btn6 = document.getElementById("btn6");
+        var fail = document.getElementById("fail");
+        function win1(){
+            true1++;
+            btn1.hidden = true; 
+            btn2.hidden = true; 
+        }
+        function win2(){
+            true1++;
+            btn3.hidden = true; 
+            btn4.hidden = true; 
+        }
+        function win3(){
+            true1++;
+            btn5.hidden = true; 
+            btn6.hidden = true; 
+        }
+        function fail1(){
+            btn1.hidden = true; 
+            btn2.hidden = true; 
+        }
+        function fail2(){
+            btn3.hidden = true; 
+            btn4.hidden = true; 
+        }
+        function fail3(){
+            btn5.hidden = true; 
+            btn6.hidden = true; 
+        }
+        document.getElementById('btn').onclick = function(){
+            if (true1 === 3)
+            {
+                btn.setAttribute('src','win.png');
+                fail.innerText = "";
+            }
+            else
+            {
+                btn.setAttribute('src','fail.png');
+                true1 = 3 - true1;
+                fail.innerText = `Error ${true1}`;
+            }
+            btn1.hidden = false; 
+            btn2.hidden = false; 
+            btn3.hidden = false; 
+            btn4.hidden = false; 
+            btn5.hidden = false; 
+            btn6.hidden = false; 
+            true1 = 0;
+        }
+    </script>
+</body>
+</html>

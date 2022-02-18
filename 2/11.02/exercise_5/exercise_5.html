@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+        .tab {
+            display: inline-block;
+    		margin-left: 40px;
+        }
+    </style>
+	<title>exercise_5</title>
+</head>
+<body>
+	<h2>Let's play a game</h2>
+	<p>If the result of the first example is:</p>
+		<p><span class="tab"></span>from 1 to 33 choose green color;</p>
+			<p><span class="tab"></span>from 34 to 67 choose blue color;</p>
+				<p><span class="tab"></span>from 68 to 100 choose red color;</p><br>
+
+	<p>If the result of the second example is:</p>
+		<p><span class="tab"></span>from 1 to 33 choose circle;</p>
+			<p><span class="tab"></span>from 34 to 67 choose  rectangle;</p>
+				<p><span class="tab"></span>from 68 to 100 choose triangle;</p><br>
+				<p id="table"></p>
+				<img src="shapes.png" alt="shapes" usemap="#mapshares" width="1350" height="1141">
+				<map name="mapshares">
+					<area shape="poly" coords="21, 341, 377, 341, 200, 35" alt="triangle" id="triangle1">
+					<area shape="circle" coords="680, 180, 170" alt="circle"  id="circle1">
+					<area shape="rectangle" coords="1000, 100, 1291, 267" alt="rectangle"  id="rectangle1">
+					<area shape="rectangle" coords="57, 473, 345, 651" alt="rectangle"  id="rectangle2">
+					<area shape="poly" coords="500, 737, 675, 430, 850, 735" alt="triangle"  id="triangle2">
+					<area shape="circle" coords="1120, 600, 170" alt="circle"  id="circle2">
+					<area shape="circle" coords="200, 950, 170" alt="circle"  id="circle3">
+					<area shape="rectangle" coords="535, 900, 827, 1070" alt="rectangle"  id="rectangle3">
+					<area shape="poly" coords="950, 1115, 1131, 810, 1300, 1150" alt="triangle"  id="triangle3">
+				</map><br>
+				<img src="good_luck.png" id="img"><br>
+			<input type="button" onclick='window.location.reload()' value="Repeat!">
+	<script>
+		var	html = "";
+		var random1 = getRandomInt(1, 11);
+        var random2 = getRandomInt(1, 11);
+        var random3 = getRandomInt(1, 11);
+        var random4 = getRandomInt(1, 11);
+		var img = document.getElementById('img')
+		var res = 0;
+		var res2 = 0;
+
+		html += `<p style="color: blue">` + `${random1} * ${random2}` + " color" + "</p>";
+		html += "<br>";
+		html += `<p style="color: blue">` + `${random3} * ${random4}` + " shapes" + "</p>";
+		
+		if (random1*random2 < 34)
+		{
+			res = 1;
+		}
+		else if (random1*random2 < 68)
+		{
+			res = 2;
+		}
+		else
+		{
+			res = 3;
+		}
+
+		if (random3 * random4 < 34)
+		{
+			res2 = 1; 
+		}
+		else if (random3 * random4 < 68)
+		{
+			res2 = 2;
+		}
+		else
+		{
+			res2 = 3;
+		}
+
+		document.getElementById('triangle1').onclick = function(){
+    		if (res === 3 && res2 === 3){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+
+		document.getElementById('circle1').onclick = function(){
+    		if (res === 1 && res2 === 1){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+
+		document.getElementById('rectangle1').onclick = function(){
+    		if (res === 2 && res2 === 2){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+
+		document.getElementById('rectangle2').onclick = function(){
+    		if (res === 1 && res2 === 2){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+
+		document.getElementById('triangle2').onclick = function(){
+    		if (res === 2 && res2 === 3){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+
+		document.getElementById('circle2').onclick = function(){
+    		if (res === 3 && res2 === 1){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+
+		document.getElementById('circle3').onclick = function(){
+    		if (res === 2 && res2 === 1){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+
+		document.getElementById('rectangle3').onclick = function(){
+    		if (res === 3 && res2 === 2){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+
+		document.getElementById('triangle3').onclick = function(){
+    		if (res === 1 && res2 === 3){
+    	 	   img.setAttribute('src','win.png')
+  			}
+    		else{
+    	 	   img.setAttribute('src','fail.png')
+    		}
+		}
+		function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    	}
+		function repeat(){
+			console.log("12345");
+		}
+
+		document.getElementById("table").innerHTML = html;
+	</script>
+</body>
+</html>
