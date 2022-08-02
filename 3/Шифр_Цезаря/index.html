@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Шифр Цезаря</title>
+  </head>
+  <body>
+    <br>
+    <div align="center">
+      <strong><big>Шифр Цезаря (смещение на n букв)</big></strong><br><br>
+      <fieldset style="width:150px">
+        <legend>Выберите язык</legend>
+        <input id="ru" name="language" type="checkbox" value="ru">RU
+        <input id="eng" name="language" type="checkbox" value="eng">ENG
+      </fieldset><br>
+      <p><b>Введите число для шифровки/дешифровки:</b></p><br>
+      <input id="number" name="offset" type="number" size="10"><br><br>
+      <p><b>Введите сюда Ваш текст:</b></p><br>
+      <input id="text" type="text" size="80"><br><br>
+      <fieldset style="width:300px">
+        <legend>Выберите действие:</legend>
+        <input id="encryption" name="encryption" type="checkbox" value="encryption">Шифровать
+        <input id="decryption" name="decryption" type="checkbox" value="decryption">Дешифровать
+      </fieldset><br><br>
+      <input onclick="caesar_code()" type="button" value="Результат:"><br><br>
+      <input id="result" type="text" size="80">
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
